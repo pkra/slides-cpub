@@ -76,9 +76,10 @@
                         <section>
                             <h3> MathOverflow.net</h3>
                             <div class="stretch">
-                                <iframe width="100%" height="100%"src="http://mathoverflow.net/questions/63760/is-this-ergodic-inequality-true" ></iframe>    
-                                <a href="http://mathoverflow.net/questions/63760/is-this-ergodic-inequality-true">Fallback Link</a>
+                                <img src="mathoverflow.png">
+                                
                             </div>
+                            <p><a href="http://mathoverflow.net/questions/63760/is-this-ergodic-inequality-true">(Link)</a></p>
                         </section>
 
 
@@ -147,12 +148,6 @@
                         </section>
                         <section data-markdown>
                                 <script type="text/template">
-                                        ## MathJax screenshots
-                                        * <!-- .element: class="fragment" --> 
-                                </script>
-                        </section>
-                        <section data-markdown>
-                                <script type="text/template">
                                         ## Format agnostic & extensible
                                         * <!-- .element: class="fragment" -->  Input: TeX, MathML, Asciimath
                                         * <!-- .element: class="fragment" -->  Ouput: HTML-CSS, SVG, MathML
@@ -172,6 +167,67 @@
                                         * <!-- .element: class="fragment" -->  output: TeX layout algorithm
                                 </script>
                         </section>
+                        
+                        <section>
+                            <h2>Try it</h2> 
+<script type="text/x-mathjax-config">
+                            MathJax.Hub.Queue(function () {
+                            (function () {
+    var QUEUE = MathJax.Hub.queue;  // shorthand for the queue
+    var math = null, box = null;    // the element jax for the math output, and the box it's in
+
+    //
+    //  Hide and show the box (so it doesn't flicker as much)
+    //
+    var HIDEBOX = function () {box.style.visibility = "hidden"}
+    var SHOWBOX = function () {box.style.visibility = "visible"}
+
+    //
+    //  Get the element jax when MathJax has produced it.
+    //
+    QUEUE.Push(function () {
+      math = MathJax.Hub.getAllJax("MathOutput")[0];
+      box = document.getElementById("box");
+      SHOWBOX(); // box is initially hidden so the braces don't show
+    });
+
+    //
+    //  The onchange event handler that typesets the math entered
+    //  by the user.  Hide the box, then typeset, then show it again
+    //  so we don't see a flash as the math is cleared and replaced.
+    //
+    window.UpdateMath = function (TeX) {
+      QUEUE.Push(HIDEBOX,["Text",math,"\\displaystyle{"+TeX+"}"],SHOWBOX);
+    }
+  })();
+});
+</script>
+<p>
+<p>Type some \(\rm\TeX/\LaTeX\) code and press RETURN:</p>
+<input id="MathInput" style="width:100%; height:1.5em;font-size:1em" onchange="UpdateMath(this.value)" />
+</p>
+
+<p>You typed:</p>
+<div class="box" id="box" style="visibility:hidden">
+<div id="MathOutput" class="output">$${}$$</div>
+</div>
+
+<script type="text/x-mathjax-config">
+  //
+  //  IE doesn't fire onchange events for RETURN, so
+  //   use onkeypress to do a blur (and refocus) to
+  //   force the onchange to occur
+  //
+  if (MathJax.Hub.Browser.isMSIE) {
+    MathInput.onkeypress = function () {
+      if (window.event && window.event.keyCode === 13) {this.blur(); this.focus()}
+    }
+  }
+</script>
+                            <p><a href="http://www.onemathematicalcat.org/MathJaxDocumentation/TeXSyntax.htm">help</a> -- <a href="http://meta.math.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference">inspiration</a></p>
+                            <p> (right-click on equations to show TeX source)</p>
+                        </section>
+                        
                         <section data-markdown>
                                 <script type="text/template">
                                       ## taking TeX to the web
@@ -187,6 +243,7 @@
                                         One line for easy setup, rich APIs for developers.
                                         
                                         <!-- .element: class="fragment" -->   Some examples: 
+                                        
                                         * <!-- .element: class="fragment" -->  live (math) book editing, e.g., [OERpub editor](http://oerpub.github.io/Aloha-Editor/oerpub/index.html)
                                         * <!-- .element: class="fragment" -->  interactive learning, e.g., [Numbas](http://numbas.mathcentre.ac.uk/test-yourself/complex-roots-of-real-polynomials/)
                                         * <!-- .element: class="fragment" -->  web and mobile apps, e.g., [xcas](https://github.com/xcaspad)
@@ -230,20 +287,82 @@
                                           > <img src="easy--ios7.png" style="width:20em;"/>
                                 </script>
                         </section>
-                        <section data-markdown>
-                                <script type="text/template">
-                                        ## Browser support (ctd.)
+                        <section>
+                                        <h2>Browser support (ctd.)</h2> 
                                         Your current browser:
-                                        
-                                        <div class="stretch"> <iframe width="100%" height="300" src="http://jsfiddle.net/uWnbS/embedded/result,js,html,css/" frameborder="0"></iframe></div>
-                                </script>
+                                       
+                                        <div class="stretch"> <iframe width="100%" height="100%" src="http://jsfiddle.net/uWnbS/embedded/result,js,html,css/" frameborder="0"></iframe></div>
                         </section>
+                        <section>
+                                        <h2>Browser support (ctd.)</h2> 
+                                        Your current browser with MathJax:
+                                       
+                                        <div class="stretch"> <iframe width="100%" height="100%" src="http://jsfiddle.net/25UdN/1/embedded/result,js,html,css/" allowfullscreen="allowfullscreen" frameborder="0"></iframe></div>
+                        </section>
+                        <section data-markdown>
+                                        ## MathJax Browser support: IE6
+                                        ![IE6](screenshots/winxp_ie_6.0.png)
+                                        
+                        </section>
+                        <section data-markdown>
+                                        ## MathJax Browser support: IE7
+                                        ![IE7](screenshots/winxp_ie_7.0.png)
+                                        
+                        </section>
+                        <section data-markdown>
+                                        ## MathJax Browser support: IE8
+                                        ![IE8](screenshots/win7_ie_8.0.png)
+                        </section>
+                        <section data-markdown>
+                                        ## MathJax Browser support: IE9
+                                        ![IE9](screenshots/win7_ie_9.0.png)
+                        </section>
+                        <section data-markdown>
+                                        ## MathJax Browser support: IE11
+                                        ![IE11](screenshots/win7_ie_11.0.png)
+                        </section>
+                        <section data-markdown>
+                                        ## MathJax Browser support: Chrome 35
+                                        ![Chrome 35](screenshots/winxp_chrome_35.0.png)
+                        </section>
+                        <section data-markdown>
+                                        ## MathJax Browser support: Firefox 30
+                                        ![Firefox 30](screenshots/winxp_firefox_30.0.png)
+                        </section>
+                        <section data-markdown>
+                                        ## MathJax Browser support: Safari 6
+                                        ![Safari 6](screenshots/safari_6.jpg)
+                        </section>
+                        <section data-markdown>
+                                        ## MathJax Browser support: Safari 7
+                                        ![Safari 7](screenshots/safari_7.jpg)
+                        </section>
+                        <section data-markdown>
+                                        ## MathJax Browser support: iPad
+                                        ![iPad](screenshots/ipad.jpg)
+                        </section>
+                        <section data-markdown>
+                                        ## MathJax Browser support: iPhone
+                                        ![iPhone](screenshots/iphone.jpg)
+                        </section>
+                        <section data-markdown>
+                                        ## MathJax Browser support: Android
+                                        ![Android](screenshots/android.png)
+                        </section>
+                        <section data-markdown>
+                                        ## MathJax Browser support: Opera 12
+                                        ![Opera 12](screenshots/opera.jpg)
+                        </section>
+                    </section>
+    <section>
                         <section data-markdown>
                                 <script type="text/template">
                                         ## ePub 3
                                         * <!-- .element: class="fragment" -->  The open ebook standard
-                                        * <!-- .element: class="fragment" -->  iBooks, Nook, Google Play Books
-                                        * <!-- .element: class="fragment" -->  Presentation MathML included since 3.0
+                                        * <!-- .element: class="fragment" -->  "(x)HTML5 in a box"
+                                          * <!-- .element: class="fragment" --> portable, reflowable, accessible
+                                        * <!-- .element: class="fragment" -->  iBooks, Nook, Google Play Books etc.
+                                        * <!-- .element: class="fragment" -->  (Presentation) MathML included since 3.0
                                         * <!-- .element: class="fragment" -->  Support on reading systems: it's complicated
                                 </script>
                         </section>
@@ -251,6 +370,15 @@
                                 <script type="text/template">
                                         ## ePub 3 demo
                                         <!-- .element: class="fragment" -->  You'll have to wait until the actual talk...
+                                </script>
+                        </section>
+                        <section data-markdown>
+                                <script type="text/template">
+                                        ## MathJax in production workflows
+                                        * <!-- .element: class="fragment" -->  Client-side (MathJax)
+                                        * <!-- .element: class="fragment" -->  server side (MathJax-node)
+                                          * <!-- .element: class="fragment" -->  pre-production (MathML, SVG generation)
+                                          * <!-- .element: class="fragment" -->  content quality assurance (rendering quality, compatibility, performance)
                                 </script>
                         </section>
 
